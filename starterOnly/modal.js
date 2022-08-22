@@ -26,3 +26,38 @@ function launchModalClose() {
 }
 
 document.getElementById("close-modal").addEventListener('click',launchModalClose);
+
+
+// Formulaire 
+function isValidate(){
+  alert('formulaire envoyé !');
+}
+
+document.getElementById("reserve").addEventListener("submit", function(e){
+  alert('formulaire envoyé !');
+
+  var erreur;
+  var first = document.getElementById("first");
+  var last = document.getElementById("last");
+  var email = document.getElementById("email");
+  var birthdate = document.getElementById("birthdate");
+  var quantity = document.getElementById("quantity");
+
+  if (!first.value){
+    erreur = "Veuillez renseigner un pseudo";
+  }
+
+  if (!last.value){
+    erreur = "Veuillez renseigner un pseudo";
+  }
+
+  if (!email.value){
+    erreur = "Veuillez renseigner un pseudo";
+  }
+
+  if (!birthdate.value){
+    erreur = "Veuillez renseigner un pseudo";
+  }
+
+  console.log(erreur);
+});
