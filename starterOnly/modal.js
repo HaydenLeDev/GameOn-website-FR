@@ -36,7 +36,7 @@ console.log(document.forms["reserve"]["first"]);
  * Checks if a button has been selected.
  * @returns if a button is select
  */
-function checked_button(){
+function checkedButton(){
   var validateBoutonRadio = document.getElementsByName("location");
   for (var i = 0; i < validateBoutonRadio.length; i++){
     console.log(validateBoutonRadio[i].checked);
@@ -47,21 +47,23 @@ function checked_button(){
   return false;
 }
 
-function validate(){
-
-  var erreur;
-  var isChecked = checked_button();
+function checkedInputs(){
   var inputs = document.getElementsByClassName("text-control");
-  
-
   console.log(inputs);
-
   for (var i = 0; i < inputs.length; i++){
     console.log(inputs[i].value);
     if(!inputs[i].value){
-      erreur = "Tout les champs doivent etre remplit !"
+      return "Tout les champs doivent etre remplit !";
     }
   }
+  return;
+}
+
+function validate(){
+
+  var erreur = checkedInputs();
+  var isChecked = checkedButton();
+
 
   console.log("check: " + isChecked);
 
