@@ -57,7 +57,7 @@ function checkedInputs(){
   var isChecked = checkedButton();
   var erreur;
   console.log(inputs);
-  consol.log(document.getElementById("checkbox1").checked);
+
   if (inputs[0].value.length < 2){
     return erreur = "Votre Prénom doit contenir au moins 2 lettres !";
   }
@@ -77,11 +77,9 @@ function checkedInputs(){
   for (var i = 1; i < inputs.length; i++){
     console.log(inputs[i].name);
     if(!inputs[i].value){
-       return erreur = "Tout les champs doivent etre remplit !";
+      return erreur = "Tout les champs doivent etre remplit !";
     }
   }
-
-  
 
   return erreur;
 }
