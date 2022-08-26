@@ -47,27 +47,57 @@ function checkedButton(){
   return false;
 }
 
+/**
+ * Returns user input errors.
+ * @returns return a string containing the error
+*/
+
 function checkedInputs(){
   var inputs = document.getElementsByClassName("text-control");
+  var isChecked = checkedButton();
+  var erreur;
   console.log(inputs);
-  for (var i = 0; i < inputs.length; i++){
-    console.log(inputs[i].value);
+  consol.log(document.getElementById("checkbox1").checked);
+  if (inputs[0].value.length < 2){
+    return erreur = "Votre Prénom doit contenir au moins 2 lettres !";
+  }
+
+  if (inputs[1].value.length < 2){
+    return erreur = "Votre Nom doit contenir au moins 2 lettres !";
+  }
+
+  if(!inputs[3].value){
+    return erreur = "Vous devez entrer votre date de naissance.";
+  }
+
+  if (isChecked === false){
+    return erreur = "Vous devez choisir une option.";
+  }
+
+  for (var i = 1; i < inputs.length; i++){
+    console.log(inputs[i].name);
     if(!inputs[i].value){
-      return "Tout les champs doivent etre remplit !";
+       return erreur = "Tout les champs doivent etre remplit !";
     }
   }
-  return;
-}
 
+  
+
+  return erreur;
+}
+ 
+/**
+ * Validate the form
+ * @returns if form is validate
+ */
 function validate(){
 
   var erreur = checkedInputs();
   var isChecked = checkedButton();
 
-
   console.log("check: " + isChecked);
 
-  if(erreur || isChecked === false){
+  if(isChecked === false || erreur){
     document.getElementById("erreur").innerHTML = erreur;
     alert(erreur);
     console.log(erreur);
