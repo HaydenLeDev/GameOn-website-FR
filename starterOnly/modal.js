@@ -29,35 +29,51 @@ document.getElementById("close-modal").addEventListener('click',launchModalClose
 
 
 // Formulaire 
-function isValidate(){
-  alert('formulaire envoyé !');
+
+console.log(document.forms["reserve"]["first"]);
+
+/**
+ * Checks if a button has been selected.
+ * @returns if a button is select
+ */
+function checked_button(){
+  var validateBoutonRadio = document.getElementsByName("location");
+  for (var i = 0; i < validateBoutonRadio.length; i++){
+    console.log(validateBoutonRadio[i].checked);
+    if(validateBoutonRadio[i].checked){
+      return true;
+    }
+  }
+  return false;
 }
 
-document.getElementById("reserve").addEventListener("submit", function(e){
-  alert('formulaire envoyé !');
+function validate(){
 
   var erreur;
-  var first = document.getElementById("first");
-  var last = document.getElementById("last");
-  var email = document.getElementById("email");
-  var birthdate = document.getElementById("birthdate");
-  var quantity = document.getElementById("quantity");
+  var isChecked = checked_button();
+  var inputs = document.getElementsByClassName("text-control");
+  
 
-  if (!first.value){
-    erreur = "Veuillez renseigner un pseudo";
+  console.log(inputs);
+
+  for (var i = 0; i < inputs.length; i++){
+    console.log(inputs[i].value);
+    if(!inputs[i].value){
+      erreur = "Tout les champs doivent etre remplit !"
+    }
   }
 
-  if (!last.value){
-    erreur = "Veuillez renseigner un pseudo";
-  }
+  console.log("check: " + isChecked);
 
-  if (!email.value){
-    erreur = "Veuillez renseigner un pseudo";
+  if(erreur || isChecked === false){
+    document.getElementById("erreur").innerHTML = erreur;
+    alert(erreur);
+    console.log(erreur);
+    return false;
+  } else {
+    alert('formulaire envoyé !');
+    return true;
   }
+}
 
-  if (!birthdate.value){
-    erreur = "Veuillez renseigner un pseudo";
-  }
 
-  console.log(erreur);
-});
