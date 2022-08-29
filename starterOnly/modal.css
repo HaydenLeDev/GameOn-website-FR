@@ -27,7 +27,8 @@ p {
 }
 
 #erreur{
-  color: red;
+  color: #ff0000;
+  font-size: 14px;
 }
 
 img {

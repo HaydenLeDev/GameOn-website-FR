@@ -47,6 +47,7 @@ function checkedButton(){
   return false;
 }
 
+
 /**
  * Returns user input errors.
  * @returns return a string containing the error
@@ -57,6 +58,13 @@ function checkedInputs(){
   var isChecked = checkedButton();
   var erreur;
   console.log(inputs);
+
+  for (var i = 1; i < inputs.length; i++){
+    console.log(inputs[i].name);
+    if(!inputs[i].value){
+      return erreur = "Tout les champs doivent etre remplit !";
+    }
+  }
 
   if (inputs[0].value.length < 2){
     return erreur = "Votre Prénom doit contenir au moins 2 lettres !";
@@ -71,14 +79,11 @@ function checkedInputs(){
   }
 
   if (isChecked === false){
-    return erreur = "Vous devez choisir une option.";
-  }
+    return erreur = "Vous devez choisir une ville.";
+  } 
 
-  for (var i = 1; i < inputs.length; i++){
-    console.log(inputs[i].name);
-    if(!inputs[i].value){
-      return erreur = "Tout les champs doivent etre remplit !";
-    }
+  if (!document.getElementsByName("ccu").checked){
+    alert ("Nop");
   }
 
   return erreur;
@@ -92,8 +97,6 @@ function validate(){
 
   var erreur = checkedInputs();
   var isChecked = checkedButton();
-
-  console.log("check: " + isChecked);
 
   if(isChecked === false || erreur){
     document.getElementById("erreur").innerHTML = erreur;
