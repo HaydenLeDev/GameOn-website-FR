@@ -56,6 +56,7 @@ function checkedButton(){
 function checkedInputs(){
   var inputs = document.getElementsByClassName("text-control");
   var isChecked = checkedButton();
+  var cgu = document.getElementById("checkbox1").checked;
   var erreur;
   console.log(inputs);
 
@@ -82,8 +83,8 @@ function checkedInputs(){
     return erreur = "Vous devez choisir une ville.";
   } 
 
-  if (!document.getElementsByName("ccu").checked){
-    alert ("Nop");
+  if (cgu === false){
+    return erreur = "Vous devez accepter les conditions générals d'utilisation ";
   }
 
   return erreur;
@@ -104,7 +105,7 @@ function validate(){
     console.log(erreur);
     return false;
   } else {
-    alert('formulaire envoyé !');
+    alert("Merci ! Votre réservation a été reçue.");
     return true;
   }
 }
