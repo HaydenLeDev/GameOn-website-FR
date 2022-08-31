@@ -11,6 +11,9 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const heroSection = document.querySelector(".hero-section");
+const topNav = document.querySelector(".topnav");
+const copyrights = document.querySelector(".copyrights");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -18,11 +21,15 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  heroSection.style.display = "none";
+  topNav.style.display = "none";
+  copyrights.style.display = "none";
 }
 
 //Fermeture du launch
 function launchModalClose() {
   modalbg.style.display = "none";
+  heroSection.style.display = "block";
 }
 
 document.getElementById("close-modal").addEventListener('click',launchModalClose);
