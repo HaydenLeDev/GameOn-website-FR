@@ -108,11 +108,12 @@ img {
 
 
  @media screen and (max-width: 540px) {
+
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /*margin-top: -15px;*/
   }
 
   .header-logo img{
@@ -509,7 +510,9 @@ footer {
 
 @media screen and (max-width: 800px) {
   .hero-section {
-    display: block;
+    display: flex;
+    min-height : fit-content;
+    flex-direction: column;
     box-shadow: unset;
   }
   .hero-content {
@@ -528,12 +531,12 @@ footer {
     white-space: normal;
   }
   .hero-text {
+    margin-top: 0px;
     width: unset;
-    font-size: 1.5rem;
+    font-size: 13px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
   }
   .hero-section > .btn-signup {
     display: block;
@@ -541,8 +544,8 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
     text-align: center;
+    margin: 0px;
   }
 }
 
