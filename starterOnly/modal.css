@@ -457,7 +457,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -528,6 +527,7 @@ footer {
     display: flex;
     min-height : fit-content;
     flex-direction: column;
+    gap: 50px;
     box-shadow: unset;
   }
   .hero-content {
@@ -544,12 +544,12 @@ footer {
   .hero-headline {
     font-size: 40px;
     white-space: normal;
+    margin-bottom: 30px;
   }
   .hero-text {
     margin-top: 0px;
     width: 100%;
     white-space: normal;
-    background-color: red;
     font-size: 13px;
   }
   .hero-img img {
@@ -557,12 +557,12 @@ footer {
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
+    margin: 0px auto 10px;
     padding: 12px 35px;
   }
   .copyrights {
     text-align: center;
-    margin: 0px;
+    margin: 20px 0px 20px 0px;
   }
 }
 
