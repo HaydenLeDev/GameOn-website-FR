@@ -22,14 +22,23 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
   heroSection.style.display = "none";
-  topNav.style.display = "none";
   copyrights.style.display = "none";
+  if (screen.width > 800 ){
+    topNav.style.display = "none";
+  }
 }
 
 //Fermeture du launch
 function launchModalClose() {
   modalbg.style.display = "none";
-  heroSection.style.display = "block";
+  topNav.style.display = "block";
+  if (screen.width > 800 ){
+    heroSection.style.display = "grid";
+  } else{
+    heroSection.style.display = "flex";
+  }
+  
+  copyrights.style.display = "block";
 }
 
 document.getElementById("close-modal").addEventListener('click',launchModalClose);
