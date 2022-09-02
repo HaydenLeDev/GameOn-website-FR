@@ -63,6 +63,13 @@ function checkedButton(){
   return false;
 }
 
+/**
+ * Check if email is correct
+ * @returns true if is correct
+ */
+function emailValidate(){
+  
+}
 
 /**
  * Returns user input errors.
