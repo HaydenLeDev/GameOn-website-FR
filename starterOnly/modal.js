@@ -63,13 +63,6 @@ function checkedButton(){
   return false;
 }
 
-/**
- * Check if email is correct
- * @returns true if is correct
- */
-function emailValidate(){
-  
-}
 
 /**
  * Returns user input errors.
@@ -82,6 +75,7 @@ function validate(){
   var quantity = document.getElementById("quantity");
   var cgu = document.getElementById("checkbox1").checked;
   var erreur = true;
+  var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   console.log(inputs);
 
   for (var i = 1; i < inputs.length; i++){
