@@ -35,7 +35,7 @@ function launchModalClose() {
   if (screen.width > 800 ){
     heroSection.style.display = "grid";
   } else{
-    heroSection.style.display = "flex";
+    heroSection.style.display = "block";
   }
   
   copyrights.style.display = "block";
@@ -69,38 +69,80 @@ function checkedButton(){
  * @returns return a string containing the error
 */
 
-function checkedInputs(){
+function validate(){
   var inputs = document.getElementsByClassName("text-control");
   var isChecked = checkedButton();
+  var quantity = document.getElementById("quantity");
   var cgu = document.getElementById("checkbox1").checked;
-  var erreur;
+  var erreur = true;
   console.log(inputs);
 
   for (var i = 1; i < inputs.length; i++){
     console.log(inputs[i].name);
     if(!inputs[i].value){
-      return erreur = "Tout les champs doivent etre remplit !";
+      document.getElementById("erreur-cgu").innerHTML = "Tout les champs doivent etre remplit !";
+      erreur = false;
     }
   }
 
   if (inputs[0].value.length < 2){
-    return erreur = "Votre Prénom doit contenir au moins 2 lettres !";
+    erreur = false;
+    inputs[0].setAttribute("style", "border: solid 3px red;");
+    document.getElementById("erreur-first").innerHTML = "Votre Prénom doit contenir au moins 2 lettres !";
+  } else{
+    inputs[0].setAttribute("style", "border: none;");
+    document.getElementById("erreur-first").innerHTML = "";
   }
 
   if (inputs[1].value.length < 2){
-    return erreur = "Votre Nom doit contenir au moins 2 lettres !";
+    erreur = false;
+    inputs[1].setAttribute("style", "border: solid 3px red;");
+    document.getElementById("erreur-name").innerHTML = "Votre Nom doit contenir au moins 2 lettres !";
+  } else{
+    inputs[1].setAttribute("style", "border: none;");
+    document.getElementById("erreur-name").innerHTML = "";
+  }
+
+  if(!inputs[2].value){
+    erreur = false;
+    inputs[2].setAttribute("style", "border: solid 3px red;");
+    document.getElementById("erreur-email").innerHTML = "Entrez une adresse mail valide !";
+  } else{
+    inputs[2].setAttribute("style", "border: none;");
+    document.getElementById("erreur-email").innerHTML = "";
   }
 
   if(!inputs[3].value){
-    return erreur = "Vous devez entrer votre date de naissance.";
+    erreur = false;
+    inputs[3].setAttribute("style", "border: solid 3px red;");
+    document.getElementById("erreur-birthdate").innerHTML = "Vous devez entrer votre date de naissance !";
+  } else{
+    inputs[3].setAttribute("style", "border: none;");
+    document.getElementById("erreur-birthdate").innerHTML = "";
   }
 
+  if(!quantity.value){
+    quantity.setAttribute("style", "border: solid 3px red;");
+    document.getElementById("erreur-quantity").innerHTML = "Veillez rentrez votre nombre de participation !";
+  } else{
+    quantity.setAttribute("style", "border: none;");
+    document.getElementById("erreur-quantity").innerHTML = "";
+  }
+
+
   if (isChecked === false){
-    return erreur = "Vous devez choisir une ville.";
-  } 
+    erreur = false;
+    document.getElementById("erreur-town").innerHTML = "Veillez choisir une ville !";
+  } else{
+    document.getElementById("erreur-town").innerHTML = "";
+  }
+
 
   if (cgu === false){
-    return erreur = "Vous devez accepter les conditions générals d'utilisation ";
+    erreur = false;
+    document.getElementById("erreur-cgu").innerHTML = "Vous devez accepter les conditions générals d'utilisation !";
+  } else{
+    document.getElementById("erreur-cgu").innerHTML = "";
   }
 
   return erreur;
@@ -109,7 +151,7 @@ function checkedInputs(){
 /**
  * Validate the form
  * @returns if form is validate
- */
+ 
 function validate(){
 
   var erreur = checkedInputs();
@@ -125,5 +167,7 @@ function validate(){
     return true;
   }
 }
+
+*/
 
 
