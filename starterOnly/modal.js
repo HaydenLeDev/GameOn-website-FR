@@ -83,6 +83,14 @@ function resetCssError(items, erreurId){
   document.getElementById(erreurId).innerHTML = "";
 }
 
+function validateNames(name){
+  if(!name.match(/^([a-zA-Z ]+)$/ || name.length < 2)){
+    return true;
+  } 
+  
+  return false;
+}
+
 /**
  * Returns user input errors.
  * @returns return a string containing the error
@@ -93,11 +101,10 @@ function validate(){
   let isChecked = checkedButton();
   let quantity = document.getElementById("quantity");
   let cgu = document.getElementById("checkbox1").checked;
-  let erreur = true;
+  var erreur = true;
   let regexEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   let test = document.getElementById("email").value.match(regexEmail);
   
-
   for (let i = 1; i < inputs.length; i++){
     console.log(inputs[i].value);
     if(!inputs[i].value){
@@ -105,17 +112,17 @@ function validate(){
       erreur = false;
     }
   }
-
-  if (inputs[0].value.length < 2){
+ 
+  if (validateNames(inputs[0].value)){
     erreur = false;
-    addCssError(inputs[0], "erreur-first" ,"Votre Prénom doit contenir au moins 2 lettres !");
+    addCssError(inputs[0], "erreur-first" ,"Votre Prénom doit contenir au moins 2 lettres et pas de chiffre!");
   } else{
     resetCssError(inputs[0], "erreur-first");
   }
 
-  if (inputs[1].value.length < 2){
+  if (validateNames(inputs[1].value)){
     erreur = false;
-    addCssError(inputs[1], "erreur-name" ,"Votre Nom doit contenir au moins 2 lettres !");
+    addCssError(inputs[1], "erreur-name" ,"Votre Nom doit contenir au moins 2 lettres et pas de chiffre!");
   } else{
     resetCssError(inputs[1], "erreur-name");
   }
@@ -134,7 +141,7 @@ function validate(){
     resetCssError(inputs[3], "erreur-birthdate");
   }
 
-  if(!quantity.value){
+  if(!quantity.value || quantity.value < 0 || quantity.value > 100 ){
     addCssError(quantity, "erreur-quantity" , "Veillez rentrez votre nombre de participation !");
   } else{
     resetCssError(quantity, "erreur-quantity");
@@ -162,17 +169,6 @@ function validate(){
     modal.innerHTML = "<p id='text-validate'>Merci pour votre inscription<p><button class='btn-submit' id='button-fermer'>Fermer</button>";
     document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
   }
-  
+
   return erreur;
 }
-
-
-
-/*
-if (erreur === true){
-    let modal = document.getElementById("modal-from-content");
-    modal.classList.add("validate");
-    modal.innerHTML = "<p id='text-validate'>Merci pour votre inscription<p><button class='btn-submit' id='button-fermer'>Fermer</button>";
-    document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
-  }
-*/

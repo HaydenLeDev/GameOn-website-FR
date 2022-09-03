@@ -26,7 +26,7 @@ p {
   padding: 0.5vw;
 }
 
-img { 
+img {
   padding-right: 1rem;
 }
 
@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -64,7 +64,7 @@ img {
   border-radius: 15px;
 }
 
-.topnav a.active span{
+.topnav a.active span {
   border-bottom: #fff solid 2px;
 }
 
@@ -74,18 +74,22 @@ img {
 }
 
 @media screen and (max-width: 1120px) {
-  .header-logo img{
+  .header-logo img {
     height: 40px;
   }
 
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
 
   .topnav a.icon {
     float: right;
     display: block;
   }
 
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -99,24 +103,28 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav{
+  .topnav {
     margin: 15px 30px 28px 30px;
     overflow: visible;
   }
 
-  .header-logo img{
+  .header-logo img {
     height: 20px;
     margin-top: 20px;
   }
 
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
 
   .topnav a.icon {
     float: right;
     display: block;
   }
 
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -129,16 +137,16 @@ img {
   }
 }
 
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
 
   .topnav a.icon {
     float: right;
     display: block;
-
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -153,16 +161,14 @@ main {
 }
 
 @media screen and (max-width: 800px) {
-  main{
+  main {
     padding: 0px;
     margin: 0px 0px 0px;
   }
 
-  
-.hero-section{
-  padding: 0px 30px 0px 30px;
-}
- 
+  .hero-section {
+    padding: 0px 30px 0px 30px;
+  }
 }
 
 .modal-btn {
@@ -228,19 +234,18 @@ main {
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
+  position: media;
   color: #fff;
   padding-top: 10px;
 }
 
 @media screen and (max-width: 800px) {
-  .bground{
+  .bground {
     background-color: transparent;
   }
-  .content{
+  .content {
     margin: 80px auto -80px;
   }
- 
 }
 
 .modal-body {
@@ -536,7 +541,7 @@ input[data-error]::after {
   display: none;
 }
 
-.erreur{
+.erreur {
   color: red;
   font-size: 10px;
 }
@@ -563,7 +568,6 @@ footer {
   }
   .hero-content .btn-signup {
     display: none;
-
   }
   .hero-headline {
     font-size: 40px;
@@ -589,7 +593,7 @@ footer {
   }
 }
 
-.validate{
+.validate {
   height: 753px;
   display: flex;
   flex-direction: column;
