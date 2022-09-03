@@ -589,6 +589,24 @@ footer {
   }
 }
 
+.validate{
+  height: 753px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 300px;
+  align-items: center;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.validate #text-validate {
+  text-align: center;
+  font-weight: 400;
+  font-size: 36px;
+  line-height: 142.6%;
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;

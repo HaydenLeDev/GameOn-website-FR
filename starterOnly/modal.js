@@ -15,6 +15,7 @@ const heroSection = document.querySelector(".hero-section");
 const topNav = document.querySelector(".topnav");
 const copyrights = document.querySelector(".copyrights");
 
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -55,7 +56,6 @@ console.log(document.forms["reserve"]["first"]);
 function checkedButton(){
   var validateBoutonRadio = document.getElementsByName("location");
   for (var i = 0; i < validateBoutonRadio.length; i++){
-    console.log(validateBoutonRadio[i].checked);
     if(validateBoutonRadio[i].checked){
       return true;
     }
@@ -63,6 +63,25 @@ function checkedButton(){
   return false;
 }
 
+/**
+ * Add the css to the input in case of error.
+ * @param {*} items 
+ * @param {*} erreurText 
+ */
+function addCssError(items, erreurId, erreurText){
+  items.setAttribute("style", "border: solid 3px red;");
+  document.getElementById(erreurId).innerHTML = erreurText;
+}
+
+/**
+ * Reset the css if a box is filled in correctly.
+ * @param {*} items 
+ * @param {string} erreurId 
+ */
+function resetCssError(items, erreurId){
+  items.setAttribute("style", "border: none;");
+  document.getElementById(erreurId).innerHTML = "";
+}
 
 /**
  * Returns user input errors.
@@ -70,16 +89,17 @@ function checkedButton(){
 */
 
 function validate(){
-  var inputs = document.getElementsByClassName("text-control");
-  var isChecked = checkedButton();
-  var quantity = document.getElementById("quantity");
-  var cgu = document.getElementById("checkbox1").checked;
-  var erreur = true;
-  var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  console.log(inputs);
+  let inputs = document.getElementsByClassName("text-control");
+  let isChecked = checkedButton();
+  let quantity = document.getElementById("quantity");
+  let cgu = document.getElementById("checkbox1").checked;
+  let erreur = true;
+  let regexEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+  let test = document.getElementById("email").value.match(regexEmail);
+  
 
-  for (var i = 1; i < inputs.length; i++){
-    console.log(inputs[i].name);
+  for (let i = 1; i < inputs.length; i++){
+    console.log(inputs[i].value);
     if(!inputs[i].value){
       document.getElementById("erreur-cgu").innerHTML = "Tout les champs doivent etre remplit !";
       erreur = false;
@@ -88,46 +108,36 @@ function validate(){
 
   if (inputs[0].value.length < 2){
     erreur = false;
-    inputs[0].setAttribute("style", "border: solid 3px red;");
-    document.getElementById("erreur-first").innerHTML = "Votre Prénom doit contenir au moins 2 lettres !";
+    addCssError(inputs[0], "erreur-first" ,"Votre Prénom doit contenir au moins 2 lettres !");
   } else{
-    inputs[0].setAttribute("style", "border: none;");
-    document.getElementById("erreur-first").innerHTML = "";
+    resetCssError(inputs[0], "erreur-first");
   }
 
   if (inputs[1].value.length < 2){
     erreur = false;
-    inputs[1].setAttribute("style", "border: solid 3px red;");
-    document.getElementById("erreur-name").innerHTML = "Votre Nom doit contenir au moins 2 lettres !";
+    addCssError(inputs[1], "erreur-name" ,"Votre Nom doit contenir au moins 2 lettres !");
   } else{
-    inputs[1].setAttribute("style", "border: none;");
-    document.getElementById("erreur-name").innerHTML = "";
+    resetCssError(inputs[1], "erreur-name");
   }
 
-  if(!inputs[2].value){
+  if(!inputs[2].value || !test){
     erreur = false;
-    inputs[2].setAttribute("style", "border: solid 3px red;");
-    document.getElementById("erreur-email").innerHTML = "Entrez une adresse mail valide !";
+    addCssError(inputs[2], "erreur-email" , "Entrez une adresse mail valide !");
   } else{
-    inputs[2].setAttribute("style", "border: none;");
-    document.getElementById("erreur-email").innerHTML = "";
+    resetCssError(inputs[2], "erreur-email");
   }
 
   if(!inputs[3].value){
     erreur = false;
-    inputs[3].setAttribute("style", "border: solid 3px red;");
-    document.getElementById("erreur-birthdate").innerHTML = "Vous devez entrer votre date de naissance !";
+    addCssError(inputs[3], "erreur-birthdate" , "Vous devez entrer votre date de naissance !");
   } else{
-    inputs[3].setAttribute("style", "border: none;");
-    document.getElementById("erreur-birthdate").innerHTML = "";
+    resetCssError(inputs[3], "erreur-birthdate");
   }
 
   if(!quantity.value){
-    quantity.setAttribute("style", "border: solid 3px red;");
-    document.getElementById("erreur-quantity").innerHTML = "Veillez rentrez votre nombre de participation !";
+    addCssError(quantity, "erreur-quantity" , "Veillez rentrez votre nombre de participation !");
   } else{
-    quantity.setAttribute("style", "border: none;");
-    document.getElementById("erreur-quantity").innerHTML = "";
+    resetCssError(quantity, "erreur-quantity");
   }
 
 
@@ -145,30 +155,16 @@ function validate(){
   } else{
     document.getElementById("erreur-cgu").innerHTML = "";
   }
-
   return erreur;
 }
- 
-/**
- * Validate the form
- * @returns if form is validate
- 
-function validate(){
 
-  var erreur = checkedInputs();
-  var isChecked = checkedButton();
 
-  if(isChecked === false || erreur){
-    document.getElementById("erreur").innerHTML = erreur;
-    alert(erreur);
-    console.log(erreur);
-    return false;
-  } else {
-    alert("Merci ! Votre réservation a été reçue.");
-    return true;
+
+/*
+if (erreur === true){
+    let modal = document.getElementById("modal-from-content");
+    modal.classList.add("validate");
+    modal.innerHTML = "<p id='text-validate'>Merci pour votre inscription<p><button class='btn-submit' id='button-fermer'>Fermer</button>";
+    document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
   }
-}
-
 */
-
-
