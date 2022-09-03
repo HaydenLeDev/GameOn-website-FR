@@ -155,6 +155,14 @@ function validate(){
   } else{
     document.getElementById("erreur-cgu").innerHTML = "";
   }
+
+  if (erreur === true){
+    let modal = document.getElementById("modal-from-content");
+    modal.classList.add("validate");
+    modal.innerHTML = "<p id='text-validate'>Merci pour votre inscription<p><button class='btn-submit' id='button-fermer'>Fermer</button>";
+    document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
+  }
+  
   return erreur;
 }
 
