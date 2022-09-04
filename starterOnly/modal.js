@@ -46,7 +46,14 @@ document.getElementById("close-modal").addEventListener('click',launchModalClose
 
 // Formulaire 
 
-console.log(document.forms["reserve"]["first"]);
+
+
+function resetForm(){
+  let form = document.getElementById("reserve");
+  document.getElementById("validate").setAttribute("style", "visibility: hidden;");
+  form.reset();
+  form.setAttribute("style", "visibility: visible;");
+}
 
 /**
  * Checks if a button has been selected.
@@ -168,12 +175,16 @@ function validate(e){
     document.getElementById("erreur-cgu").innerHTML = "";
   }
 
-  if (erreur === true){
-    let modal = document.getElementById("modal-from-content");
-    modal.classList.add("validate");
+  if (erreur === true){ 
+    document.getElementById("reserve").setAttribute("style", "visibility: hidden;");
+    let modal = document.getElementById("validate");
     modal.innerHTML = "<p id='text-validate'>Merci pour votre inscription<p><button class='btn-submit' id='button-fermer'>Fermer</button>";
+    modal.setAttribute("style", "visibility: visible;");
+    document.getElementById("button-fermer").addEventListener('click',resetForm);
     document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
   }
 
   return erreur;
 }
+
+
