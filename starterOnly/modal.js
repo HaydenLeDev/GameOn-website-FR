@@ -101,7 +101,8 @@ function validateNames(name){
  * @returns return a string containing the error
 */
 
-function validate(){
+function validate(e){
+  e.preventDefault(); //Supprime le comportement naturel du formulaire
   let inputs = document.getElementsByClassName("text-control");
   let isChecked = checkedButton();
   let quantity = document.getElementById("quantity");
