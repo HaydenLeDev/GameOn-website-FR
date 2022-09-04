@@ -234,7 +234,7 @@ main {
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
-  position: media;
+  position : relative;
   color: #fff;
   padding-top: 10px;
 }
