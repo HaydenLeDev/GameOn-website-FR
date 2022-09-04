@@ -33,7 +33,7 @@ function launchModal() {
 function launchModalClose() {
   modalbg.style.display = "none";
   topNav.style.display = "block";
-  if (screen.width > 800 ){
+  if (screen.width > 1120 ){
     heroSection.style.display = "grid";
   } else{
     heroSection.style.display = "block";
@@ -43,7 +43,6 @@ function launchModalClose() {
 }
 
 document.getElementById("close-modal").addEventListener('click',launchModalClose);
-
 
 // Formulaire 
 
@@ -83,6 +82,12 @@ function resetCssError(items, erreurId){
   document.getElementById(erreurId).innerHTML = "";
 }
 
+
+/**
+ * Check that the text is made up of letters and contains at least 2 characters.
+ * @param {*} name 
+ * @returns false if it is correct
+ */
 function validateNames(name){
   if(!name.match(/^([a-zA-Z ]+)$/ || name.length < 2)){
     return true;
@@ -106,7 +111,6 @@ function validate(){
   let test = document.getElementById("email").value.match(regexEmail);
   
   for (let i = 1; i < inputs.length; i++){
-    console.log(inputs[i].value);
     if(!inputs[i].value){
       document.getElementById("erreur-cgu").innerHTML = "Tout les champs doivent etre remplit !";
       erreur = false;
