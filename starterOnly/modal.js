@@ -1,3 +1,6 @@
+/**
+ * Manages the responsive navigation bar
+ */
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -6,6 +9,8 @@ function editNav() {
     x.className = "topnav";
   }
 }
+
+
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -29,7 +34,7 @@ function launchModal() {
   }
 }
 
-//Fermeture du launch
+//Closing launch
 function launchModalClose() {
   modalbg.style.display = "none";
   topNav.style.display = "block";
@@ -42,12 +47,14 @@ function launchModalClose() {
   copyrights.style.display = "block";
 }
 
-document.getElementById("close-modal").addEventListener('click',launchModalClose);
+
+
 
 // Formulaire 
 
-
-
+/**
+ * Reset formulaire.
+ */
 function resetForm(){
   let form = document.getElementById("reserve");
   document.getElementById("validate").setAttribute("style", "visibility: hidden;");
@@ -96,7 +103,8 @@ function resetCssError(items, erreurId){
  * @returns false if it is correct
  */
 function validateNames(name){
-  if(!name.match(/^([a-zA-Z ]+)$/ || name.length < 2)){
+  console.log(name + ": " + name.length);
+  if(!name.match(/^([a-zA-Z ]+)$/) || name.length < 2){
     return true;
   } 
   
@@ -117,13 +125,6 @@ function validate(e){
   var erreur = true;
   let regexEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
   let test = document.getElementById("email").value.match(regexEmail);
-  
-  for (let i = 1; i < inputs.length; i++){
-    if(!inputs[i].value){
-      document.getElementById("erreur-cgu").innerHTML = "Tout les champs doivent etre remplit !";
-      erreur = false;
-    }
-  }
  
   if (validateNames(inputs[0].value)){
     erreur = false;
@@ -180,7 +181,8 @@ function validate(e){
     let modal = document.getElementById("validate");
     modal.innerHTML = "<p id='text-validate'>Merci pour votre inscription<p><button class='btn-submit' id='button-fermer'>Fermer</button>";
     modal.setAttribute("style", "visibility: visible;");
-    document.getElementById("button-fermer").addEventListener('click',resetForm);
+    document.getElementById("button-fermer").addEventListener('click',resetForm); //reset le formulaire
+    //document.getElementById("close-modal").addEventListener('click',resetForm);
     document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
   }
 
@@ -188,3 +190,5 @@ function validate(e){
 }
 
 
+//Ecoute de la croix pour fermer le menu. 
+document.getElementById("close-modal").addEventListener('click',launchModalClose);
