@@ -112,6 +112,16 @@ function validateNames(name){
 }
 
 /**
+ * Removes transition time for more fluidity.
+ */
+function fastTransition(){
+  let checkBoxs = document.getElementsByClassName("checkbox-icon");
+  for(let i = 0; i < checkBoxs.length; i++){
+    checkBoxs[i].setAttribute("style","transition: 0s;");
+  }
+}
+
+/**
  * Returns user input errors.
  * @returns return a string containing the error
 */
@@ -181,6 +191,7 @@ function validate(e){
     let modal = document.getElementById("validate");
     modal.innerHTML = "<p id='text-validate'>Merci pour votre inscription<p><button class='btn-submit' id='button-fermer'>Fermer</button>";
     modal.setAttribute("style", "visibility: visible;");
+    fastTransition();
     document.getElementById("button-fermer").addEventListener('click',resetForm); //reset le formulaire
     //document.getElementById("close-modal").addEventListener('click',resetForm);
     document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
@@ -192,3 +203,4 @@ function validate(e){
 
 //Ecoute de la croix pour fermer le menu. 
 document.getElementById("close-modal").addEventListener('click',launchModalClose);
+
