@@ -103,7 +103,6 @@ function validateNames(name){
   if(!name.match(/^([a-zA-Z ]+)$/) || name.length < 2){
     return true;
   } 
-  
   return false;
 }
 
@@ -130,7 +129,7 @@ function validate(e){
   let cgu = document.getElementById("checkbox1").checked;
   var erreur = true;
   let regexEmail = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-  let test = document.getElementById("email").value.match(regexEmail);
+  let emailValidate = document.getElementById("email").value.match(regexEmail);
  
   if (validateNames(inputs[0].value)){
     erreur = false;
@@ -146,7 +145,7 @@ function validate(e){
     resetCssError(inputs[1], "erreur-name");
   }
 
-  if(!inputs[2].value || !test){
+  if(!inputs[2].value || !emailValidate){
     erreur = false;
     addCssError(inputs[2], "erreur-email" , "Entrez une adresse mail valide !");
   } else{
