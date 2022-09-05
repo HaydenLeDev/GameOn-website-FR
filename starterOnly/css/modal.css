@@ -617,9 +617,6 @@ footer {
   line-height: 142.6%;
 }
 
-#button-fermer{
-}
-
 @keyframes modalopen {
   from {
     opacity: 0;

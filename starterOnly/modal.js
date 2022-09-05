@@ -47,9 +47,6 @@ function launchModalClose() {
   copyrights.style.display = "block";
 }
 
-
-
-
 // Formulaire 
 
 /**
@@ -103,7 +100,6 @@ function resetCssError(items, erreurId){
  * @returns false if it is correct
  */
 function validateNames(name){
-  console.log(name + ": " + name.length);
   if(!name.match(/^([a-zA-Z ]+)$/) || name.length < 2){
     return true;
   } 
