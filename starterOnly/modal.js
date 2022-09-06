@@ -188,7 +188,7 @@ function validate(e){
     modal.setAttribute("style", "visibility: visible;");
     fastTransition();
     document.getElementById("button-fermer").addEventListener('click',resetForm); //reset le formulaire
-    //document.getElementById("close-modal").addEventListener('click',resetForm);
+    document.getElementById("close-modal").addEventListener('click',resetForm);
     document.getElementById("button-fermer").addEventListener('click',launchModalClose); //Permet de fermer avec le bouton fermer
   }
 
